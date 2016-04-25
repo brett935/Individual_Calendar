@@ -29,7 +29,7 @@ namespace Individual_Calendar_Project
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            this.Hide(); //hide the form if the user clicks cancel
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -45,6 +45,13 @@ namespace Individual_Calendar_Project
         private void addForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            EventClass even = new EventClass();
+            even.addEvent("Test Event", "0", "1993-01-06", "12:30:00");
+            even = null;
         }
     }
 }

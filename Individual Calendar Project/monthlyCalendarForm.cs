@@ -27,5 +27,11 @@ namespace Individual_Calendar_Project
         {
 
         }
+
+        private void viewList_Click(object sender, EventArgs e)
+        {
+            monthlyEventListForm monthlyEventForm = new monthlyEventListForm();
+            monthlyEventForm.Show();
+        }
     }
 }
