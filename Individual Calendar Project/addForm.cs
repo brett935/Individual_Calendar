@@ -50,7 +50,8 @@ namespace Individual_Calendar_Project
         private void button1_Click(object sender, EventArgs e)
         {
             EventClass even = new EventClass();
-            even.addEvent("Test Event", "0", "1993-01-06", "12:30:00");
+            //even.addEvent("Test Event", "0", "1993-01-06", "12:30:00");
+            even.deleteEvent("3"); //delete event with id=3
             even = null;
         }
     }

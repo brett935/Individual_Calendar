@@ -75,7 +75,7 @@ namespace Individual_Calendar_Project
 
                 conn.Open();
 
-                string sql = "DELETE FROM Events WHERE eventID=" + eventID;
+                string sql = "DELETE FROM Events WHERE eventID='" + eventID +"'";
 
                 MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand(sql, conn);
 
