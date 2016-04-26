@@ -51,7 +51,8 @@ namespace Individual_Calendar_Project
         {
             EventClass even = new EventClass();
             //even.addEvent("Test Event", "0", "1993-01-06", "12:30:00");
-            even.deleteEvent("3"); //delete event with id=3
+            //even.deleteEvent("3"); //delete event with id=3
+            even.editEvent("ChangedTitleTest", "8", "2016-04-25", "12:45:00");//modify event #8
             even = null;
         }
     }

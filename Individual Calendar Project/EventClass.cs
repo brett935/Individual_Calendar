@@ -19,6 +19,7 @@ namespace Individual_Calendar_Project
         string eventTitle;
         string eventDate;
         string eventDetails;
+        string eventID;
         const string sqlServerAddress = "brettnapier.com;";
         const string sqlUserName = "";
 
@@ -59,8 +60,40 @@ namespace Individual_Calendar_Project
             Console.WriteLine("Done.");
 
         }
-        public void saveEvent() { }
-        public void editEvent() { }
+        public void saveEvent() {
+
+        }
+        public void editEvent(string eventTitle, string eventID, string eventDate, string eventTime) {
+            string connStr = "server=brettnapier.com;user=csc340Individual;database=csc340IndividualProject;port=3306;password=cscproject;";
+
+            MySql.Data.MySqlClient.MySqlConnection conn = new MySql.Data.MySqlClient.MySqlConnection(connStr);
+
+            try
+            {
+
+                Console.WriteLine("Connecting to MySQL...");
+
+                conn.Open();
+
+                string sql = "UPDATE Events SET eventTitle='" + eventTitle + "', eventDate='" + eventDate +"', eventTime='" + eventTime + "' WHERE eventID='" + eventID + "'";
+
+                MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand(sql, conn);
+
+                cmd.ExecuteNonQuery();
+
+            }
+
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.ToString());
+
+            }
+
+            conn.Close();
+
+            Console.WriteLine("Done.");
+        }
         //deletes an event from users calendar, eventID is the ID of the event to delete
         public void deleteEvent(string eventID) {
 
@@ -95,7 +128,37 @@ namespace Individual_Calendar_Project
             Console.WriteLine("Done.");
         }
         public void viewEvent() { }
-        public void viewEventList() { }
+        public void viewEventList() {
+            string connStr = "server=brettnapier.com;user=csc340Individual;database=csc340IndividualProject;port=3306;password=cscproject;";
+
+            MySql.Data.MySqlClient.MySqlConnection conn = new MySql.Data.MySqlClient.MySqlConnection(connStr);
+
+            try
+            {
+
+                Console.WriteLine("Connecting to MySQL...");
+
+                conn.Open();
+
+                string sql = "SELECT * FROM Events WHERE eventDate='" + eventDate +"'";
+
+                MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand(sql, conn);
+
+                cmd.ExecuteNonQuery();
+
+            }
+
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.ToString());
+
+            }
+
+            conn.Close();
+
+            Console.WriteLine("Done.");
+        }
 
     }
 }
