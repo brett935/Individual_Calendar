@@ -1,0 +1,11 @@
+C:\Users\Brett\Desktop\Calendar2\Calendar2\bin\Debug\Calendar2.exe.config
+C:\Users\Brett\Desktop\Calendar2\Calendar2\bin\Debug\Calendar2.exe
+C:\Users\Brett\Desktop\Calendar2\Calendar2\bin\Debug\Calendar2.pdb
+C:\Users\Brett\Desktop\Calendar2\Calendar2\bin\Debug\MySql.Data.dll
+C:\Users\Brett\Desktop\Calendar2\Calendar2\obj\Debug\Calendar2.Form1.resources
+C:\Users\Brett\Desktop\Calendar2\Calendar2\obj\Debug\Calendar2.Properties.Resources.resources
+C:\Users\Brett\Desktop\Calendar2\Calendar2\obj\Debug\Calendar2.csproj.GenerateResource.Cache
+C:\Users\Brett\Desktop\Calendar2\Calendar2\obj\Debug\Calendar2.exe
+C:\Users\Brett\Desktop\Calendar2\Calendar2\obj\Debug\Calendar2.pdb
+C:\Users\Brett\Desktop\Calendar2\Calendar2\obj\Debug\Calendar2.csprojResolveAssemblyReference.cache
+C:\Users\Brett\Desktop\Calendar2\Calendar2\obj\Debug\Calendar2.MonthlyEventsForm.resources
