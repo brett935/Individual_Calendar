@@ -16,6 +16,7 @@ namespace Calendar2
         ArrayList eventList = new ArrayList(); //list to hold all events in the selected day
         string selectedDate = "";
 
+
         public Form1()
         {
             InitializeComponent();
