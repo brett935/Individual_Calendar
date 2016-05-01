@@ -30,7 +30,6 @@ namespace Calendar2
             
 
             eventList.Clear(); //clear the list before beginning
-            //myString = convertDateFormat(myString);
 
             selectedDate = myString;
 
@@ -57,10 +56,16 @@ namespace Calendar2
             catch (Exception el) { Console.Write(el); }
         }
 
-        //insert button (new button)
+        //add event form button
         private void button3_Click(object sender, EventArgs e)
         {
             //string sql = "INSERT INTO Events (eventTitle, Users_userID, eventDate, eventTime) VALUES ('" + eventTitle + "','" + userID + "','" + eventDate + "','" + eventTime + "')"; //may be wrong     
+
+            DateTime selectedDay = monthCalendar1.SelectionRange.Start; //get selected 
+            string myString = String.Format("{0:yyyy-MM-dd}", selectedDay); //convert the date and time to a string containing the 
+
+            Form addEventForm = new AddEventForm( myString ); //create a new add event form
+            addEventForm.Show(); //display the add event form
         }
 
         //called when a different date is selected on the monthly calendar
