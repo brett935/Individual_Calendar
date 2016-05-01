@@ -88,6 +88,9 @@ namespace Calendar2
             string connStr = "server=brettnapier.com;user=csc340Individual;database=csc340IndividualProject;port=3306;password=cscproject;";
             MySql.Data.MySqlClient.MySqlConnection conn = new MySql.Data.MySqlClient.MySqlConnection(connStr);
 
+            String ms = String.Format("{0:00}", m); //convert to two digit string
+            String ys = String.Format("{0:00}", y); //convert to two digit string
+
             //attempt to make a connection to the SQL server
             try
             {
@@ -96,10 +99,18 @@ namespace Calendar2
 
                 conn.Open();
 
-                string sql = "SELECT * FROM Events WHERE eventDate LIKE '%-04-30' ORDER BY eventStartTime ASC";
+                //string sql = "SELECT * FROM Events WHERE eventDate LIKE '%-04-30' ORDER BY eventStartTime ASC";
+
+                // ----------REPLACE THIS USING SQL PARAMATERS--------------------------------------------------------
+                string sql = "SELECT * FROM Events WHERE eventDate LIKE '@y-@m-%' ORDER BY eventStartTime ASC";
+                sql =  sql.Replace("@y", ys);
+                sql =  sql.Replace("@m", ms);
+                //--------------------the problem is that'@y-@m-%' is in single quotes and is treated as a literal----
+
 
                 MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand(sql, conn);
-                //cmd.Parameters.AddWithValue("@myDate", dateString); //add paramaters to query
+                //cmd.Parameters.AddWithValue("@y", ys); //add paramaters to query
+                //cmd.Parameters.AddWithValue("@m", ms); //add paramaters to query
                 MySql.Data.MySqlClient.MySqlDataAdapter myAdapter = new MySql.Data.MySqlClient.MySqlDataAdapter(cmd);
                 myAdapter.Fill(myTable); //fill the data table with results
                 Console.WriteLine("Table is ready");
