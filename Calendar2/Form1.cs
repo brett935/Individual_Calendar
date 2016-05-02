@@ -158,7 +158,6 @@ namespace Calendar2
 
                     conn.Open();
 
-                    //should probably incorporate eventID and use it to delete instead, this is a temporary solution
                     string sql = "DELETE FROM Events WHERE eventID=@ID;";
 
                     MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand(sql, conn);
@@ -203,10 +202,8 @@ namespace Calendar2
 
                 conn.Open();
 
-                ////////////////////////////////////////////////------NEED TO IMPLEMENT USER ID--------------
                 string sql = "UPDATE Events SET eventTitle=@title, eventDate=@date, eventStartTime=@startTime, eventEndTime=@endTime, eventContent=@content  WHERE eventID=@ID;";
-                ///////////////////////////////////////////////----------------------------------------------
-
+               
                 MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@ID", thisEvent.getID() ); //add paramaters to query
                 cmd.Parameters.AddWithValue("@title", title); //add paramaters to query
