@@ -10,6 +10,7 @@ namespace Calendar2
 {
     class Event
     {
+        string eventID;
         string eventTitle;
         string eventDate;
         string eventStartTime;
@@ -18,6 +19,9 @@ namespace Calendar2
 
         public Event() { }
 
+        public string getID() {
+            return eventID;
+        }
         public string getDate() {
             return eventDate;
         }
@@ -67,6 +71,7 @@ namespace Calendar2
             //iterate through retrieved tables and process the elements
             foreach (DataRow row in myTable.Rows) {
                 Event newEvent = new Event(); //create a new Event object for each row in the table
+                newEvent.eventID = row["eventID"].ToString(); //get the event id and store it in the Event object
                 newEvent.eventTitle = row["eventTitle"].ToString(); //get the event title and store it in the Event object
                 newEvent.eventDate = String.Format("{0:yyyy-MM-dd}", row["eventDate"]); //get the date and store it in the Event object and discard the time
                 newEvent.eventStartTime = row["eventStartTime"].ToString(); //get the event start time and store it in the Event object
@@ -126,6 +131,7 @@ namespace Calendar2
             foreach (DataRow row in myTable.Rows)
             {
                 Event newEvent = new Event(); //create a new Event object for each row in the table
+                newEvent.eventID = row["eventID"].ToString(); //get the event id and store it in the Event object
                 newEvent.eventTitle = row["eventTitle"].ToString(); //get the event title and store it in the Event object
                 newEvent.eventDate = String.Format("{0:yyyy-MM-dd}", row["eventDate"]); //get the date and store it in the Event object and discard the time
                 newEvent.eventStartTime = row["eventStartTime"].ToString(); //get the event start time and store it in the Event object

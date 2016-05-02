@@ -138,8 +138,8 @@ namespace Calendar2
             int selectedIndex = listBox1.SelectedIndex; //index of selected event from listbox
             Event thisEvent = eventList[selectedIndex] as Event; //treat the item in the event list as a Event
 
-            var confirmResult = MessageBox.Show("Are you sure to delete this event??",
-                                     "Confirm Delete!!",
+            var confirmResult = MessageBox.Show("Are you sure you want to delete this event?",
+                                     "Confirm Delete!",
                                      MessageBoxButtons.YesNo);
 
             
@@ -159,14 +159,10 @@ namespace Calendar2
                     conn.Open();
 
                     //should probably incorporate eventID and use it to delete instead, this is a temporary solution
-                    string sql = "DELETE FROM Events WHERE eventTitle=@title AND eventDate=@date AND eventStartTime=@startTime AND eventEndTime=@endTime AND eventContent=@content;";
+                    string sql = "DELETE FROM Events WHERE eventID=@ID;";
 
                     MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("@title", thisEvent.getTitle() ); //add paramaters to query
-                    cmd.Parameters.AddWithValue("@date", thisEvent.getDate() ); //add paramaters to query
-                    cmd.Parameters.AddWithValue("@startTime", thisEvent.getStartTime() ); //add paramaters to query
-                    cmd.Parameters.AddWithValue("@endTime", thisEvent.getEndTime() ); //add paramaters to query
-                    cmd.Parameters.AddWithValue("@content", thisEvent.getContent() ); //add paramaters to query
+                    cmd.Parameters.AddWithValue("@ID", thisEvent.getID()); //add paramaters to query
                     cmd.ExecuteNonQuery(); //execute the sql commands
 
                     Console.WriteLine("Deleted the event.");
@@ -185,8 +181,51 @@ namespace Calendar2
         //save changes on edit button
         private void button2_Click(object sender, EventArgs e)
         {
+            string title = textBox1.Text; //get the value from the title box
+            string date = textBox2.Text; //get the value from the date box
+            string startTime = textBox3.Text; //get the value from the start time box
+            string endTime = textBox4.Text; //get the value from the ending time box
+            string content = richTextBox1.Text; //get the value from the content box
 
+            int selectedIndex = listBox1.SelectedIndex; //index of selected event from listbox
+            Event thisEvent = eventList[selectedIndex] as Event; //treat the item in the event list as a Event
+
+
+            //perform SQL actions
+            string connStr = "server=brettnapier.com;user=csc340Individual;database=csc340IndividualProject;port=3306;password=cscproject;";
+            MySql.Data.MySqlClient.MySqlConnection conn = new MySql.Data.MySqlClient.MySqlConnection(connStr);
+
+            //attempt to make a connection to the SQL server
+            try
+            {
+
+                Console.WriteLine("Connecting to MySQL...");
+
+                conn.Open();
+
+                ////////////////////////////////////////////////------NEED TO IMPLEMENT USER ID--------------
+                string sql = "UPDATE Events SET eventTitle=@title, eventDate=@date, eventStartTime=@startTime, eventEndTime=@endTime, eventContent=@content  WHERE eventID=@ID;";
+                ///////////////////////////////////////////////----------------------------------------------
+
+                MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@ID", thisEvent.getID() ); //add paramaters to query
+                cmd.Parameters.AddWithValue("@title", title); //add paramaters to query
+                cmd.Parameters.AddWithValue("@date", date); //add paramaters to query
+                cmd.Parameters.AddWithValue("@startTime", startTime); //add paramaters to query
+                cmd.Parameters.AddWithValue("@endTime", endTime); //add paramaters to query
+                cmd.Parameters.AddWithValue("@content", content); //add paramaters to query
+                cmd.ExecuteNonQuery(); //execute the sql commands
+
+                Console.WriteLine("Done updating event");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+
+            conn.Close();
         }
+
     } 
 
     
