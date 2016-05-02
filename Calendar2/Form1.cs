@@ -129,45 +129,52 @@ namespace Calendar2
         //delete event button
         private void button4_Click(object sender, EventArgs e)
         {
+
             int selectedIndex = listBox1.SelectedIndex; //index of selected event from listbox
-            Event thisEvent = eventList[selectedIndex] as Event; //treat the item in the event list as a Event
 
-            var confirmResult = MessageBox.Show("Are you sure you want to delete this event?",
-                                     "Confirm Delete!",
-                                     MessageBoxButtons.YesNo);
+            //if an index has not been selected than selectedIndex will be negative
+            //only try to delete the event if it is non-negative
+            if(selectedIndex >= 0){
+                Event thisEvent = eventList[selectedIndex] as Event; //treat the item in the event list as a Event
 
-            
-            //check confirmation message result before deleting
-            if (confirmResult == DialogResult.Yes)
-            {
-                //perform SQL actions
-                string connStr = "server=brettnapier.com;user=csc340Individual;database=csc340IndividualProject;port=3306;password=cscproject;";
-                MySql.Data.MySqlClient.MySqlConnection conn = new MySql.Data.MySqlClient.MySqlConnection(connStr);
+                var confirmResult = MessageBox.Show("Are you sure you want to delete this event?",
+                                         "Confirm Delete!",
+                                         MessageBoxButtons.YesNo);
 
-                //attempt to make a connection to the SQL server
-                try
+
+                //check confirmation message result before deleting
+                if (confirmResult == DialogResult.Yes)
                 {
+                    //perform SQL actions
+                    string connStr = "server=brettnapier.com;user=csc340Individual;database=csc340IndividualProject;port=3306;password=cscproject;";
+                    MySql.Data.MySqlClient.MySqlConnection conn = new MySql.Data.MySqlClient.MySqlConnection(connStr);
 
-                    Console.WriteLine("Connecting to MySQL...");
+                    //attempt to make a connection to the SQL server
+                    try
+                    {
 
-                    conn.Open();
+                        Console.WriteLine("Connecting to MySQL...");
 
-                    string sql = "DELETE FROM Events WHERE eventID=@ID;";
+                        conn.Open();
 
-                    MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("@ID", thisEvent.getID()); //add paramaters to query
-                    cmd.ExecuteNonQuery(); //execute the sql commands
+                        string sql = "DELETE FROM Events WHERE eventID=@ID;";
 
-                    Console.WriteLine("Deleted the event.");
+                        MySql.Data.MySqlClient.MySqlCommand cmd = new MySql.Data.MySqlClient.MySqlCommand(sql, conn);
+                        cmd.Parameters.AddWithValue("@ID", thisEvent.getID()); //add paramaters to query
+                        cmd.ExecuteNonQuery(); //execute the sql commands
+
+                        Console.WriteLine("Deleted the event.");
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.ToString());
+                    }
+
+                    conn.Close();
+
                 }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.ToString());
-                }
-
-                conn.Close();
-
             }
+            
             
         }
 
