@@ -21,3 +21,4 @@ C:\Users\Brett\Google Drive\College\EKU\Spring 2016\CSC 340\Individual Project\I
 C:\Users\Brett\Google Drive\College\EKU\Spring 2016\CSC 340\Individual Project\Individual Calendar Project\Calendar2\Calendar2\obj\Debug\Calendar2.exe
 C:\Users\Brett\Google Drive\College\EKU\Spring 2016\CSC 340\Individual Project\Individual Calendar Project\Calendar2\Calendar2\obj\Debug\Calendar2.pdb
 C:\Users\Brett\Google Drive\College\EKU\Spring 2016\CSC 340\Individual Project\Individual Calendar Project\Calendar2\Calendar2\obj\Debug\Calendar2.csprojResolveAssemblyReference.cache
+C:\Users\Brett\Google Drive\College\EKU\Spring 2016\CSC 340\Individual Project\Individual Calendar Project\Calendar2\Calendar2\obj\Debug\Calendar2.LoginForm.resources

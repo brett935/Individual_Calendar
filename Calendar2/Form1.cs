@@ -14,10 +14,13 @@ namespace Calendar2
     public partial class Form1 : Form
     {
         ArrayList eventList = new ArrayList(); //list to hold all events in the selected day
+        string userID; //holds the userID for the current calendar
 
-        public Form1()
+        public Form1(string ID)
         {
             InitializeComponent();
+
+            userID = ID; //set the userID for the form upon creation
         } //class constructor
 
         //runs when the form is loaded, loads the events for the current day
