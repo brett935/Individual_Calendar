@@ -14,8 +14,6 @@ namespace Calendar2
     public partial class Form1 : Form
     {
         ArrayList eventList = new ArrayList(); //list to hold all events in the selected day
-        string selectedDate = "";
-
 
         public Form1()
         {
@@ -26,15 +24,13 @@ namespace Calendar2
         private void Form1_Load(object sender, EventArgs e)
         {
             DateTime thisDay = DateTime.Today; //get current date and time
-            string myString = String.Format("{0:yyyy-MM-dd}", thisDay); //convert the date and time to a string containing the date
+            string selectedDate = String.Format("{0:yyyy-MM-dd}", thisDay); //convert the date and time to a string containing the date
             
 
             eventList.Clear(); //clear the list before beginning
 
-            selectedDate = myString;
-
             Event aEvent = new Event(); //create a new event to use its methods
-            eventList = aEvent.getEventList(myString); //get a list off all events for the current day
+            eventList = aEvent.getEventList(selectedDate); //get a list off all events for the current day
             listBox1.Items.Clear(); //clear the listbox(incase it isn't empty) before adding to it
             
             //iterate through events 
@@ -72,14 +68,12 @@ namespace Calendar2
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
         {
             DateTime selectedDay = monthCalendar1.SelectionRange.Start; //get selected date
-            string myString = String.Format("{0:yyyy-MM-dd}", selectedDay); //convert the date and time to a string containing the date
+            string selectedDate = String.Format("{0:yyyy-MM-dd}", selectedDay); //convert the date and time to a string containing the date
 
             eventList.Clear(); //clear the event list
 
-            selectedDate = myString;
-
             Event aEvent = new Event(); //create a new event object
-            eventList = aEvent.getEventList(myString); //retrieve an list of events
+            eventList = aEvent.getEventList(selectedDate); //retrieve an list of events
             listBox1.Items.Clear(); //clear the listbox
             //iterate through the list of events
             foreach (Event nextEvent in eventList) {
