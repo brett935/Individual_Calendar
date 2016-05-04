@@ -167,6 +167,17 @@ namespace Calendar2
                         cmd.ExecuteNonQuery(); //execute the sql commands
 
                         Console.WriteLine("Deleted the event.");
+
+                        //listBox1.Items.RemoveAt(selectedIndex); //delete the event from the listbox
+                        listBox1.Refresh(); //refresh the listbox
+
+                        //clear the textboxes
+                        //after the event is deleted
+                        textBox1.Clear();
+                        textBox2.Clear();
+                        textBox3.Clear();
+                        textBox4.Clear();
+                        richTextBox1.Clear();
                     }
                     catch (Exception ex)
                     {
@@ -174,7 +185,6 @@ namespace Calendar2
                     }
 
                     conn.Close();
-
                 }
             }
             
@@ -218,6 +228,7 @@ namespace Calendar2
                 cmd.ExecuteNonQuery(); //execute the sql commands
 
                 Console.WriteLine("Done updating event");
+               
             }
             catch (Exception ex)
             {
@@ -225,8 +236,12 @@ namespace Calendar2
             }
 
             conn.Close();
+
+            
         }
 
+        //called by addEventForm to update textboxes/listbox after adding the event
+        public void update(string title, string date, string startTime, string endTime, string content) { }
     } 
 
     

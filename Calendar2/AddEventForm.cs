@@ -70,6 +70,14 @@ namespace Calendar2
             }
 
             conn.Close();
+
+            //get instance of our main GUI by accessing open form and treating it as a Form1
+            if (System.Windows.Forms.Application.OpenForms["Form1"] != null)
+            {
+                (System.Windows.Forms.Application.OpenForms["Form1"] as Form1).update(title, date, startTime, endTime, content); //call function from that form
+            }
+
+
             this.Hide(); //hide the form
         }
     }
