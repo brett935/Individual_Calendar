@@ -149,7 +149,7 @@ namespace Calendar2
                 if (confirmResult == DialogResult.Yes)
                 {
                     //perform SQL actions
-                    string connStr = "server=brettnapier.com;user=csc340Individual;database=csc340IndividualProject;port=3306;password=cscproject;";
+                    string connStr = "server=brettnapier.com;user=csc340Group;database=csc340GroupProject;port=3306;password=cscproject;";
                     MySql.Data.MySqlClient.MySqlConnection conn = new MySql.Data.MySqlClient.MySqlConnection(connStr);
 
                     //attempt to make a connection to the SQL server
@@ -205,7 +205,7 @@ namespace Calendar2
 
 
             //perform SQL actions
-            string connStr = "server=brettnapier.com;user=csc340Individual;database=csc340IndividualProject;port=3306;password=cscproject;";
+            string connStr = "server=brettnapier.com;user=csc340Group;database=csc340GroupProject;port=3306;password=cscproject;";
             MySql.Data.MySqlClient.MySqlConnection conn = new MySql.Data.MySqlClient.MySqlConnection(connStr);
 
             //attempt to make a connection to the SQL server
@@ -242,6 +242,12 @@ namespace Calendar2
 
         //called by addEventForm to update textboxes/listbox after adding the event
         public void update(string title, string date, string startTime, string endTime, string content) { }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ScheduleMeetingForm scheduleForm = new ScheduleMeetingForm();
+            scheduleForm.ShowDialog();
+        }
     } 
 
     

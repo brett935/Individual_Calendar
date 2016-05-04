@@ -42,7 +42,7 @@ namespace Calendar2
         public ArrayList getEventList(string dateString) {
             ArrayList eventList = new ArrayList(); //create array list to hold events
             DataTable myTable = new DataTable(); //create a data table to store results of sql query
-            string connStr = "server=brettnapier.com;user=csc340Individual;database=csc340IndividualProject;port=3306;password=cscproject;";
+            string connStr = "server=brettnapier.com;user=csc340Group;database=csc340GroupProject;port=3306;password=cscproject;";
             MySql.Data.MySqlClient.MySqlConnection conn = new MySql.Data.MySqlClient.MySqlConnection(connStr);
 
             //attempt to make a connection to the SQL server
@@ -90,7 +90,7 @@ namespace Calendar2
         public ArrayList getMonthlyEventList(int m, int y) {
             ArrayList eventList = new ArrayList(); //create array list to hold events
             DataTable myTable = new DataTable(); //create a data table to store results of sql query
-            string connStr = "server=brettnapier.com;user=csc340Individual;database=csc340IndividualProject;port=3306;password=cscproject;";
+            string connStr = "server=brettnapier.com;user=csc340Group;database=csc340GroupProject;port=3306;password=cscproject;";
             MySql.Data.MySqlClient.MySqlConnection conn = new MySql.Data.MySqlClient.MySqlConnection(connStr);
 
             String ms = String.Format("{0:00}", m); //convert to two digit string
