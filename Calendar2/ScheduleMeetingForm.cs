@@ -16,6 +16,7 @@ namespace Calendar2
         {
             InitializeComponent();
 
+
             ArrayList eventList = new ArrayList(); //create array list to hold events
             DataTable myTable = new DataTable(); //create a data table to store results of sql query
             string connStr = "server=brettnapier.com;user=csc340Group;database=csc340GroupProject;port=3306;password=cscproject;";
